@@ -14,19 +14,9 @@ void solve(){
     int n;
     cin>>n;
     int a[n];
-    for(int i=0;i<n;i++){
-        cin>>a[i];
-    }
-    int ans=INT_MIN;
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            for(int k=j+1;k<n;k++){
-                for(int l=k+1;l<n;l++){
-                    ans=max(ans,(abs(a[i]-a[j])+abs(a[j]-a[k])+abs(a[k]-a[l])+abs(a[l]-a[i])));
-                }
-            }
-        }
-    }
+    for(int i=0;i<n;i++){cin>>a[i];}
+    sort(a,a+n);
+    ll ans=abs(a[0]-a[n-1])+abs(a[n-1]-a[1])+abs(a[1]-a[n-2])+abs(a[n-2]-a[0]);
     cout<<ans<<endl;
 }
  

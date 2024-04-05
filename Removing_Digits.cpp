@@ -9,33 +9,24 @@ const ll mod=1e9+7;
 #define mp make_pair
 #define pb push_back
 #define endl "\n"
- 
+
+// dp[n]->no. of digits to be subtracted to reach 0
 void solve(){
     int n;
     cin>>n;
-    int e;
-    map<int,int> m;
-    for(int i=0;i<n;i++){
-        cin>>e;
-        m[e]++;
-    }
-    vector<int> a;
-    for(auto x: m){
-        if(x.second==1){
-            a.push_back(x.first);
+    vector<int> dp(n+1,1e9);
+    dp[0]=0;
+    for(int i=1;i<=n;i++){
+        string num=to_string(i);
+        for(auto c: num){
+            int dig=c-'0';
+            if(dig!=0){
+                dp[i]=min(dp[i],dp[i-dig]+1);
+            }
         }
     }
-    sort(a.begin(),a.end());
-    if(a.size()>=2){
-        m[a[1]]=0;
-    }
-    int mex=0;
-    while(m[mex]>0){
-        mex++;
-    }
-    cout<<mex<<endl;
-   
-
+    cout<<dp[n]<<endl;
+    
 }
  
 int main(){
@@ -43,7 +34,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
     solve();
     }

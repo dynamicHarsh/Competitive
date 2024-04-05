@@ -13,29 +13,21 @@ const ll mod=1e9+7;
 void solve(){
     int n;
     cin>>n;
-    int e;
-    map<int,int> m;
-    for(int i=0;i<n;i++){
-        cin>>e;
-        m[e]++;
+    int a[n+1];
+    
+    for(int i=1;i<=n;i++){
+        cin>>a[i];
     }
-    vector<int> a;
-    for(auto x: m){
-        if(x.second==1){
-            a.push_back(x.first);
-        }
+    vector<int> dp(n+1,INT_MIN);
+    vector<int> mx(n+1,INT_MIN);
+    dp[1]=0;
+    mx[a[1]]=-1;
+    for(int i=2;i<=n;i++){
+        dp[i]=dp[i-1];
+        dp[i]=max(dp[i],i+1+mx[a[i]]);
+        mx[a[i]]=max(mx[a[i]],dp[i-1]-i);
     }
-    sort(a.begin(),a.end());
-    if(a.size()>=2){
-        m[a[1]]=0;
-    }
-    int mex=0;
-    while(m[mex]>0){
-        mex++;
-    }
-    cout<<mex<<endl;
-   
-
+    cout<<dp[n]<<"\n";
 }
  
 int main(){

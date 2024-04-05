@@ -9,33 +9,24 @@ const ll mod=1e9+7;
 #define mp make_pair
 #define pb push_back
 #define endl "\n"
- 
+ll dp[1000005];
+//no. of ways to form target dp[target];
 void solve(){
-    int n;
-    cin>>n;
-    int e;
-    map<int,int> m;
+    int n,target;
+    cin>>n>>target;
+    int a[n];
     for(int i=0;i<n;i++){
-        cin>>e;
-        m[e]++;
+        cin>>a[i];
     }
-    vector<int> a;
-    for(auto x: m){
-        if(x.second==1){
-            a.push_back(x.first);
+    dp[0]=1;
+    for(int i=1;i<=target;i++){
+        for(auto x: a){
+            if(i-x>=0){
+                dp[i]=(dp[i]+dp[i-x])%mod;
+            }
         }
     }
-    sort(a.begin(),a.end());
-    if(a.size()>=2){
-        m[a[1]]=0;
-    }
-    int mex=0;
-    while(m[mex]>0){
-        mex++;
-    }
-    cout<<mex<<endl;
-   
-
+    cout<<dp[target]<<endl;
 }
  
 int main(){
@@ -43,7 +34,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
     solve();
     }

@@ -11,13 +11,18 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    vector<int> a(5);
-    for(int i=0;i<5;i++){
-        cin>>a[i];
+    ll a,b,c;
+    cin>>a>>b>>c;
+    if(a!=c-1){
+        cout<<"-1"<<endl;
+        return;
     }
-    for(auto x: a){
-        cout<<x;
-    }
+    ll h=log2(2*c-1);
+    ll d=1<<h;
+    d-=c;
+    b=max(b-d,0LL);
+    h=h+ceil(double(b)/double(c));
+    cout<<h<<endl;
 }
  
 int main(){
@@ -25,7 +30,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

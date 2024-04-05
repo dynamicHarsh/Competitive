@@ -9,15 +9,23 @@ const ll mod=1e9+7;
 #define mp make_pair
 #define pb push_back
 #define endl "\n"
- 
+
 void solve(){
-    vector<int> a(5);
-    for(int i=0;i<5;i++){
-        cin>>a[i];
+    int n,m;
+    cin>>n>>m;
+    ll a[n],b[n];
+    for(int i=0;i<n;i++){cin>>a[i];}
+    for(int i=0;i<n;i++){cin>>b[i];}
+
+    ull ans=1e18;
+    ull sum=0;
+    for(int i=n-1;i>=0;i--){
+        if(i<m){
+            ans=min(ans,sum+a[i]);
+        }
+        sum+=min(a[i],b[i]);
     }
-    for(auto x: a){
-        cout<<x;
-    }
+    cout<<ans<<endl;
 }
  
 int main(){
@@ -25,7 +33,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

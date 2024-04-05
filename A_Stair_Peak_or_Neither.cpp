@@ -11,12 +11,16 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    vector<int> a(5);
-    for(int i=0;i<5;i++){
-        cin>>a[i];
+    int a,b,c;
+    cin>>a>>b>>c;
+    if(a<b && b<c ){
+        cout<<"STAIR"<<endl;
     }
-    for(auto x: a){
-        cout<<x;
+    else if(a<b && b>c){
+        cout<<"PEAK"<<endl;
+    }
+    else{
+        cout<<"NONE"<<endl;
     }
 }
  
@@ -25,7 +29,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

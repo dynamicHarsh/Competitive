@@ -9,38 +9,41 @@ const ll mod=1e9+7;
 #define mp make_pair
 #define pb push_back
 #define endl "\n"
-int n,m;
 vector<int> adj[100005];
-bool vis[100005];
-
-void dfs(int i){
-    vis[i]=1;
-    for(auto x: adj[i]){
-        if(!vis[x]){
-            dfs(x);
+int c[100005];
+void dfs(int i,int cu=0){
+    if(c[i]>=0){
+        if(c[i]^cu){
+            cout<<"IMPOSSIBLE"<<endl;
+            exit(0);
         }
+        return;
+    }
+    c[i]=cu;
+    for(auto v: adj[i]){
+        dfs(v,cu^1);
     }
 }
-
 void solve(){
+    int n,m;
     cin>>n>>m;
     for(int i=0,a,b;i<m;i++){
-        cin>>a>>b;a--,b--;
+        cin>>a>>b;
+        a--,b--;
         adj[a].push_back(b);
         adj[b].push_back(a);
     }
-    vector<int> ans;
+    memset(c,-1,4*n);
+
     for(int i=0;i<n;i++){
-        if(!vis[i]){
-            ans.push_back(i);
+        if(c[i]<0){
             dfs(i);
         }
     }
-    cout<<ans.size()-1<<endl;
-    for(int i=1;i<ans.size();i++){
-        cout<<ans[0]+1<<" "<<ans[i]+1<<"\n";
+    for(int i=0;i<n;i++){
+        cout<<c[i]+1<<" ";
     }
-    
+    cout<<"\n";
 }
  
 int main(){

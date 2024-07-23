@@ -11,14 +11,23 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    // vector<int> a(5);
-    // for(int i=0;i<5;i++){
-    //     cin>>a[i];
-    // }
-    // for(auto x: a){
-    //     cout<<x;
-    // }
-    cout<<int('a')<<endl;
+    int n;
+    cin>>n;
+    int e;
+    vector<int> f(51,0);
+    for(int i=0;i<n;i++){
+        cin>>e;
+        f[e]++;
+    }
+    for(int i=50;i>=1;i--){
+        if(f[i]%2==1){
+            cout<<"YES"<<endl;
+            return;
+        }
+    }
+    cout<<"NO"<<endl;
+    
+    
 }
  
 int main(){
@@ -26,7 +35,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

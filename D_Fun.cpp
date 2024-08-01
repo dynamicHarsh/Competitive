@@ -11,27 +11,13 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
-    }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
+    int n,x;
+    cin>>n>>x;
+    ll ans=0;
+    for(int i=1;i<=n;i++){
+        for(int j=1;i*j<=n && i+j<=x;j++){
+            ans+=min((n-i*j)/(i+j),x-(i+j));
         }
-        else{
-            break;
-        }
-        sub--;
     }
     cout<<ans<<endl;
 }

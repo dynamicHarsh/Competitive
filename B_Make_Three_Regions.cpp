@@ -11,27 +11,17 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int n,k;
-    cin>>n>>k;
+    int n;
+    cin>>n;
+    string s[2];
+    cin>>s[0]>>s[1];
     int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
-    }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
+    for(int i=0;i+2<n;i++){
+        if(s[0][i+1]=='.' && s[1][i+1]=='.'){
+            if(s[0][i]=='x' && s[0][i+2]=='x' && s[1][i+1]=='.' && s[1][i]=='.' && s[1][i+2]=='.') ans++;
+        else if(s[1][i]=='x' && s[1][i+2]=='x' && s[0][i+1]=='.' && s[0][i]=='.' && s[0][i+2]=='.') ans++;
         }
-        else{
-            break;
-        }
-        sub--;
+        
     }
     cout<<ans<<endl;
 }

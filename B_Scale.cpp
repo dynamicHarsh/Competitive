@@ -13,27 +13,19 @@ const ll mod=1e9+7;
 void solve(){
     int n,k;
     cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
+    vector<string> a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
+    for(int i=0;i<n;i+=k){
+        
+        for(int j=0;j<n;j+=k){
+           cout<<a[i][j];
         }
-        else{
-            break;
-        }
-        sub--;
+        cout<<endl;
+        
     }
-    cout<<ans<<endl;
+    
 }
  
 int main(){

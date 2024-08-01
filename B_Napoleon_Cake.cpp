@@ -11,29 +11,25 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
-    }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++) cin>>a[i];
+
+    vector<int> pre(n+1,0);
+    for(int i=0;i<n;i++){
+        if(a[i]){
+            pre[(i-a[i]+1)>=0?(i-a[i]+1):0]+=1;
+            pre[i+1]+=-1;
         }
-        else{
-            break;
-        }
-        sub--;
     }
-    cout<<ans<<endl;
+    for(int i=1;i<=n;i++){
+        pre[i]+=pre[i-1];
+        if(pre[i-1]) cout<<"1 ";
+        else cout<<"0 ";
+    }
+    cout<<endl;
+
 }
  
 int main(){

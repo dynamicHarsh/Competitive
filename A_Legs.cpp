@@ -11,29 +11,9 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
-    }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
-        }
-        else{
-            break;
-        }
-        sub--;
-    }
-    cout<<ans<<endl;
+    double n;
+    cin>>n;
+    cout<< ceil(n/4.0)<<endl;
 }
  
 int main(){

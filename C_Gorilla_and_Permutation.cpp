@@ -11,29 +11,29 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
-    }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
+    int n,m,k;
+    cin>>n>>m>>k;
+    int a[n];
+    int val1=n,val2=1;
+    for(int i=0;i<n;i++){
+        if(val1>=k){
+            a[i]=val1;
+            val1--;
+        }
+        else if(val1>m){
+            a[i]=val1;
+            val1--;
         }
         else{
-            break;
+            a[i]=val2;
+            val2++;
         }
-        sub--;
+        
     }
-    cout<<ans<<endl;
+    for(auto x: a){
+        cout<<x<<" ";
+    }
+    cout<<endl;
 }
  
 int main(){

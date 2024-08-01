@@ -11,29 +11,18 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
-    }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
+    int n;
+    cin>>n;
+    int e;
+    int maxi=INT_MIN;
+    for(int i=0;i<n;i++){
+        cin>>e;
+        if(i%2==0){
+            maxi=max(maxi,e);
         }
-        else{
-            break;
-        }
-        sub--;
     }
-    cout<<ans<<endl;
+
+    cout<<maxi<<endl;
 }
  
 int main(){

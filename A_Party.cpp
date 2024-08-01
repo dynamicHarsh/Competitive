@@ -9,29 +9,28 @@ const ll mod=1e9+7;
 #define mp make_pair
 #define pb push_back
 #define endl "\n"
- 
-void solve(){
-    int n,k;
-    cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
+
+int ans=0;
+vector<int> adj[2005];
+void dfs(int node,int depth){
+    ans=max(depth,ans);
+
+    for(auto x: adj[node]){
+        dfs(x,depth+1);
     }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
-            ans++;
-        }
-        else{
-            break;
-        }
-        sub--;
+}
+
+void solve(){
+    int n;
+    cin>>n;
+    int e;
+    
+    for(int i=1;i<=n;i++){
+        cin>>e;
+        if(e!=-1) adj[i].push_back(e);
+    }
+    for(int i=1;i<=n;i++){
+        dfs(i,1);
     }
     cout<<ans<<endl;
 }
@@ -41,7 +40,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
     solve();
     }

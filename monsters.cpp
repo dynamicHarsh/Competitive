@@ -11,27 +11,29 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    int ans=0;
-    if(k==0){
-        cout<<"0"<<endl;
-        return;
+    int n,exp;
+    cin>>n>>exp;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
-    k-=n;
-    ans++;
-    int sub=n-1;
-    while(k>0){
-        k-=sub;
-        ans++;
-        if(k>0){
-            k-=sub;
+    map<int,int> mp;
+    int x;
+    for(int i=0;i<n;i++){
+        cin>>x;
+        mp[a[i]]=x;
+    }
+    int ans=0;
+    for(auto it: mp){
+        int e=it.first;
+        int b=it.second;
+        if(exp>=e){
+            exp+=b;
             ans++;
         }
         else{
             break;
         }
-        sub--;
     }
     cout<<ans<<endl;
 }
@@ -41,7 +43,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
     solve();
     }

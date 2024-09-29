@@ -11,11 +11,11 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    int a,b;
+    cin>>a>>b;
+    b=b%2;
+    if((b>0 && a>0 && a%2==0) || (a%2==0 && b==0)) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
  
 int main(){
@@ -23,7 +23,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

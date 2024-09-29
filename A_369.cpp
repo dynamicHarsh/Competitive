@@ -11,17 +11,17 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    int a,b;
+    cin>>a>>b;
+    if(a==b) cout<<"1"<<endl;
+    else if(abs(a-b)%2==0) cout<<"3"<<endl;
+    else cout<<"2"<<endl;
 }
  
 int main(){
     ios::sync_with_stdio(false);
       cin.tie(0);
- 
+    
     int t=1;
     // cin>>t;
     while(t--){

@@ -11,11 +11,20 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    string s;
+    cin>>s;
+    int n=s.length();
+    bool flag=false;
+    for(int i=n-1;i>=0;i--){
+        if(s[i]=='1' && flag) s[i]='#';
+        if(s[i]=='0') flag=true;
+    }
+    for(int i=0;i<n;i++){
+        if(s[i]!='#'){
+            cout<<s[i];
+        }
+    }
+    cout<<endl;
 }
  
 int main(){

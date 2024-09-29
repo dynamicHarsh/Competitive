@@ -11,11 +11,27 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    int n,x;
+    cin>>n>>x;
+    int a[n+1];
+    for(int i=1;i<=n;i++) cin>>a[i];
+
+
+    function<void(int)> dfs=[&](int node){
+        if(node==0) return;
+        int nxt=a[node];
+        a[node]=0;
+        dfs(nxt);
+    };
+
+    dfs(x);
+    int ans=0;
+    for(int i=1;i<=n;i++){
+        if(a[i]==0){ans++;}
+    }
+    cout<<ans<<endl;
+
+
 }
  
 int main(){

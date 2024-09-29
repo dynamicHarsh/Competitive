@@ -11,11 +11,19 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    ull n,x,y;
+    cin>>n>>x>>y;
+    ull e,sum=0;
+    for(ull i=0;i<n;i++){
+        cin>>e;
+        sum+=e;
+    }
+    if((x+sum)%2==y%2){
+        cout<<"Alice"<<endl;
+    }
+    else{
+        cout<<"Bob"<<endl;
+    }
 }
  
 int main(){
@@ -23,7 +31,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

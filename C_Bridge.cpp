@@ -20,46 +20,37 @@ void solve(){
         adj[v].push_back(u);
     }
 
-
-    vector<int> p(n+1,-1);
     vector<bool> vis(n+1,false);
+    vector<int> disc(n+1),low(n+1);
+    int timer=0,ans=0;
 
     function<void(int,int)> dfs=[&](int node,int parent){
-        p[node]=parent;
         vis[node]=true;
-        for(auto nxt: adj[node]){
-            if(nxt==parent) continue;
+        disc[node]=low[node]=++timer;
 
-            if(!vis[nxt]){
-                dfs(nxt,node);
+        for(auto child: adj[node]){
+            if(child==parent) continue;
+            if(!vis[child]){
+                dfs(child,node);
+                low[node]=min(low[node],low[child]);
+
+                if(disc[node]<low[child]){
+                    ans++;
+                }
             }
             else{
-                int cur=node;
-                vector<int> ans;
-                while(cur^nxt){
-                    ans.push_back(cur);
-                    cur=p[cur];
-                }
-                ans.push_back(nxt);
-                ans.push_back(node);
-                cout<<ans.size()<<endl;
-                for(auto x: ans){cout<<x<<" ";}cout<<endl;
-                exit(0);
+                low[node]=min(low[node],low[child]);
             }
         }
     };
-
 
     for(int i=1;i<=n;i++){
         if(!vis[i]){
             dfs(i,-1);
         }
     }
-
-    cout<<"IMPOSSIBLE"<<endl;
-
-
-
+    cout<<ans<<endl;
+    
 }
  
 int main(){

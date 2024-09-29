@@ -11,11 +11,23 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    int m,n;
+    cin>>n>>m;
+    vector<int> deg(n);
+    int u,v;
+    for(int i=0;i<m;i++){
+        cin>>u>>v;
+        u--,v--;
+        deg[u]++;
+        deg[v]++;
+    }
+    int xy=count(deg.begin(),deg.end(),1);
+    int x=n-xy-1;
+    int y=xy/x;
+    cout<<x<<" "<<y<<endl;
+    
+
+
 }
  
 int main(){
@@ -23,7 +35,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

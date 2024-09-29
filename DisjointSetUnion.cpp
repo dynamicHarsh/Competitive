@@ -9,10 +9,11 @@ const ll mod=1e9+7;
 #define mp make_pair
 #define pb push_back
 #define endl "\n"
+
 class DisjointSetUnion{
-    vector<int> rank,parent,size;
-    public:
     
+    public:
+    vector<int> rank,parent,size;
     DisjointSetUnion(int n){
         // rank.resize(n+1,0);
         size.resize(n+1,1);
@@ -30,39 +31,46 @@ class DisjointSetUnion{
     void Union(int u,int v){
         int upu=findUPar(u);
         int upv=findUPar(v);
-        if(upu==upv) return;
         if(size[upu]>=size[upv]){
             size[upu]+=size[upv];
-            parent[upv]=upu;
+            parent[v]=upu;
         }
         else{
             size[upv]+=size[upu];
-            parent[upu]=upv;
+            parent[u]=upv;
         }
     }
-    int sz(int v){
-        return size[findUPar(v)];
-    }
+
+    // void UnionByRank(int u,int v){
+    //     int upu=findUPar(u);
+    //     int upv=findUPar(v);
+    //     if(rank[upu]==rank[upv]){
+    //         parent[v]=upu;
+    //         rank[upu]++;
+    //     }
+    //     else if(rank[upu]>rank[upv]){
+    //         parent[v]=upu;
+    //     }
+    //     else{
+    //         parent[u]=upv;
+    //     }
+    // }
+
 };
+
+
 void solve(){
-    int n,m;
-    cin>>n>>m;
-    DisjointSetUnion dsu(n);
-    for(int i=0;i<m;i++){
-        int k;
-        cin>>k;
-        vector<int> v(k);
-        for(int i=0;i<k;i++){
-            cin>>v[i];
-        }
-        for(int i=0;i<k-1;i++){
-            dsu.Union(v[i],v[i+1]);
-        }
-    }
-    for(int i=1;i<=n;i++){
-        cout<<dsu.sz(i)<<" ";
+    DisjointSetUnion dsu(7);
+    dsu.Union(2,5);
+    dsu.Union(5,4);
+    dsu.Union(1,2);
+    dsu.Union(6,7);
+
+    for(int i=1;i<=7;i++){
+        cout<<dsu.size[i]<<" ";
     }
     cout<<endl;
+
 }
  
 int main(){

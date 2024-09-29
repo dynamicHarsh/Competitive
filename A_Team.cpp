@@ -11,11 +11,18 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    int n;
+    cin>>n;
+    int ans=0;
+    int a,b,c;
+    while(n--){
+        cin>>a>>b>>c;
+        if(a+b+c>1) ans++;
+    }
+    cout<<ans<<endl;
+    
+    
+
 }
  
 int main(){

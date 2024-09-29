@@ -11,11 +11,14 @@ const ll mod=1e9+7;
 #define endl "\n"
  
 void solve(){
-    int a=3;
-    string s="";
-    s+=to_string(a);
-    s[0]='a';
-    cout<<s<<endl;
+    ll n;
+    cin>>n;
+    ll a[n];
+    for(ll i=0;i<n;i++) cin>>a[i];
+    for(ll i=0;i<n-2;i++){
+        a[n-2]-=a[i];
+    }
+    cout<<a[n-1]-a[n-2]<<endl;
 }
  
 int main(){
@@ -23,7 +26,7 @@ int main(){
       cin.tie(0);
  
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     solve();
     }

@@ -1,0 +1,1 @@
+{"name":"Local: discshop","url":"d:\\Files\\Documents\\GitHub\\Competitive\\discshop.cpp","tests":[{"id":1731333788264,"input":"3\n21\n132\n104","output":"1\n12\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Files\\Documents\\GitHub\\Competitive\\discshop.cpp","group":"local","local":true}

@@ -13,22 +13,20 @@ const ll mod=1e9+7;
 void solve(){
     int64_t n;
     cin>>n;
-    int64_t a[n];
-    int64_t x=0;
-    for(int64_t i=0;i<n;i++){cin>>a[i]; x^=a[i];}
-    int64_t pre=0;
-    for(int64_t i=0;i<n;i++){
-        pre=0;
-        for(int64_t j=0;j<=i;j++){
-            pre^=a[j];
+    vector<int64_t> a(n+1);
+    
+    for(int64_t i=1;i<=n;i++){cin>>a[i]; a[i]=a[i]^a[i-1];}
+    bool possible=(a[n]==0)?true: false;
+    
+    for(int64_t i=1;i<=n;i++){
+        for(int64_t j=i+1;j<n;j++){
+            if(a[i]==(a[i]^a[j]) && a[i]==(a[n]^a[j])){
+                possible |=true;
+            }
         }
-        if(pre==(x^pre)){
-            cout<<"YES"<<endl;
-            // cout<<pre<<" "<<x<<endl;
-            return;
-        }
+        
     }
-    cout<<"NO"<<endl;
+    cout<<((possible)?"YES":"NO")<<endl;
     
 }
  

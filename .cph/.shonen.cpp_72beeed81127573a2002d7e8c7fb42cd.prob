@@ -1,0 +1,1 @@
+{"name":"Local: shonen","url":"d:\\Files\\Documents\\GitHub\\Competitive\\shonen.cpp","tests":[{"id":1732945752668,"input":"2\nC=AND(A, B)\nE=AND(C, D)\n4\nA 0 1 1 0\nB 1 1 1 1\nD 1 1 1 0\nE","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Files\\Documents\\GitHub\\Competitive\\shonen.cpp","group":"local","local":true}

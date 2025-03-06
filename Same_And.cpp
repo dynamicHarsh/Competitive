@@ -30,6 +30,7 @@ void f(long long num,long long maxi) {
         cout<<"-1"<<endl;
         return;
     }
+    //check
     cout<<k<<endl;
     for (int n : uniqueNumbers) {
        cout<<n<<" ";
